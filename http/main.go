@@ -13,6 +13,10 @@ func main() {
 	logRequest := func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		fmt.Fprintln(w, "hola, desde WASI!")
+		fmt.Fprintln(w, "Cabeceras HTTP")
+		for header, v := range r.Header {
+			fmt.Fprintf(w, "====%s: %s\n", header, v)
+		}
 	}
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", logRequest)
