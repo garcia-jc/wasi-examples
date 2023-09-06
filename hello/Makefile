@@ -1,6 +1,6 @@
 build:
-	GOOS=wasip1 GOARCH=wasm go build -o build.out -v main.go 
+	GOOS=wasip1 GOARCH=wasm go build -o hello.wasm -v main.go 
 run: build
-	wasmedge run --dir /:$(PWD):readwrite -- build.out
+	wasmedge run --dir /:$(PWD):readwrite -- hello.wasm
 test: build 
-	wasmedge run build.out
+	wasmedge run hello.wasm

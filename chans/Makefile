@@ -1,4 +1,4 @@
 build:
-	GOOS=wasip1 GOARCH=wasm go build -o build.out -v main.go 
+	GOOS=wasip1 GOARCH=wasm go build -o chans.wasm -v main.go 
 run: build
-	wasmedge run build.out
+	wasmedge run chans.wasm
