@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 func main() {
 	ch := make(chan int)
@@ -10,8 +13,8 @@ func main() {
 		fmt.Println("valor recibido", v)
 		ack <- struct{}{}
 	}()
-	fmt.Println("enviando valor")
-	ch <- 7
+	fmt.Println("enviando valor aleatorio")
+	ch <- 1 + rand.Intn(10)
 	close(ch)
 	<-ack
 }
